@@ -1,138 +1,137 @@
--- Create the ScreenGui
-local screenGui = Instance.new("ScreenGui")
-screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-screenGui.Name = "CustomGui"
+-- Create the GUI
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TitleBar = Instance.new("TextLabel")
+local NameBox = Instance.new("TextBox")
+local NameBoxLabel = Instance.new("TextLabel")
+local OnButton = Instance.new("TextButton")
+local OffButton = Instance.new("TextButton")
+local StatusLabel = Instance.new("TextLabel")
+local Footer = Instance.new("TextLabel")
 
--- Create the main frame
-local mainFrame = Instance.new("Frame")
-mainFrame.Parent = screenGui
-mainFrame.Size = UDim2.new(0, 300, 0, 150)
-mainFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
-mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-mainFrame.BorderSizePixel = 2
-mainFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
-mainFrame.Active = true
-mainFrame.Draggable = true -- Makes it movable
+-- Parent the GUI to PlayerGui
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Name = "ExampleGUI"
 
--- Create the title label
-local titleLabel = Instance.new("TextLabel")
-titleLabel.Parent = mainFrame
-titleLabel.Size = UDim2.new(1, 0, 0, 30)
-titleLabel.Position = UDim2.new(0, 0, 0, 0)
-titleLabel.Text = "Custom GUI"
-titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-titleLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-titleLabel.Font = Enum.Font.SourceSansBold
-titleLabel.TextSize = 18
+-- Frame setup
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Frame.Size = UDim2.new(0, 300, 0, 250)
+Frame.Position = UDim2.new(0.5, -150, 0.5, -125)
+Frame.Active = true
+Frame.Draggable = true
 
--- Create the toggle label
-local toggleLabel = Instance.new("TextLabel")
-toggleLabel.Parent = mainFrame
-toggleLabel.Size = UDim2.new(1, -20, 0, 40)
-toggleLabel.Position = UDim2.new(0, 10, 0, 40)
-toggleLabel.Text = "Trade Scam OFF"
-toggleLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-toggleLabel.BackgroundTransparency = 1
-toggleLabel.Font = Enum.Font.SourceSans
-toggleLabel.TextSize = 16
+-- Add smooth edges to the Frame
+local FrameUICorner = Instance.new("UICorner")
+FrameUICorner.CornerRadius = UDim.new(0, 10)
+FrameUICorner.Parent = Frame
 
--- Create the ON button
-local onButton = Instance.new("TextButton")
-onButton.Parent = mainFrame
-onButton.Size = UDim2.new(0, 100, 0, 40)
-onButton.Position = UDim2.new(0.1, 0, 0.6, 0)
-onButton.Text = "ON"
-onButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-onButton.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
-onButton.Font = Enum.Font.SourceSansBold
-onButton.TextSize = 16
+-- TitleBar setup
+TitleBar.Parent = Frame
+TitleBar.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+TitleBar.Size = UDim2.new(1, 0, 0, 30)
+TitleBar.Font = Enum.Font.SourceSansBold
+TitleBar.Text = "Trade Scam"
+TitleBar.TextColor3 = Color3.fromRGB(255, 255, 255)
+TitleBar.TextSize = 18
 
--- Create the OFF button
-local offButton = Instance.new("TextButton")
-offButton.Parent = mainFrame
-offButton.Size = UDim2.new(0, 100, 0, 40)
-offButton.Position = UDim2.new(0.6, 0, 0.6, 0)
-offButton.Text = "OFF"
-offButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-offButton.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
-offButton.Font = Enum.Font.SourceSansBold
-offButton.TextSize = 16
+-- Add smooth edges to the TitleBar
+local TitleBarUICorner = Instance.new("UICorner")
+TitleBarUICorner.CornerRadius = UDim.new(0, 10)
+TitleBarUICorner.Parent = TitleBar
 
--- Create the footer label
-local footerLabel = Instance.new("TextLabel")
-footerLabel.Parent = mainFrame
-footerLabel.Size = UDim2.new(1, 0, 0, 20)
-footerLabel.Position = UDim2.new(0, 0, 1, -20)
-footerLabel.Text = "Made by RobloxScriptsOfficial"
-footerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-footerLabel.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-footerLabel.Font = Enum.Font.SourceSans
-footerLabel.TextSize = 14
+-- NameBoxLabel setup
+NameBoxLabel.Parent = Frame
+NameBoxLabel.BackgroundTransparency = 1
+NameBoxLabel.Size = UDim2.new(1, 0, 0, 20)
+NameBoxLabel.Position = UDim2.new(0, 0, 0.15, 0)
+NameBoxLabel.Font = Enum.Font.SourceSans
+NameBoxLabel.Text = "Enter Player Username To Start:"
+NameBoxLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+NameBoxLabel.TextSize = 16
 
--- Create the minimize button (circle)
-local minimizeCircle = Instance.new("Frame")
-minimizeCircle.Parent = screenGui
-minimizeCircle.Size = UDim2.new(0, 50, 0, 50)
-minimizeCircle.Position = UDim2.new(0.9, -50, 0.1, 0)
-minimizeCircle.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-minimizeCircle.BorderSizePixel = 0
-minimizeCircle.Visible = false
-minimizeCircle.Active = true
-minimizeCircle.Draggable = true -- Makes it movable
-minimizeCircle.ZIndex = 2
-minimizeCircle.Shape = Enum.UIShape.Circle -- Makes it circular
+-- NameBox setup
+NameBox.Parent = Frame
+NameBox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+NameBox.Size = UDim2.new(0.8, 0, 0.15, 0)
+NameBox.Position = UDim2.new(0.1, 0, 0.25, 0)
+NameBox.Font = Enum.Font.SourceSans
+NameBox.PlaceholderText = "Enter Username"
+NameBox.Text = ""
+NameBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+NameBox.TextSize = 16
 
-local circleLabel = Instance.new("TextLabel")
-circleLabel.Parent = minimizeCircle
-circleLabel.Size = UDim2.new(1, 0, 1, 0)
-circleLabel.Text = "+"
-circleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-circleLabel.BackgroundTransparency = 1
-circleLabel.Font = Enum.Font.SourceSansBold
-circleLabel.TextSize = 24
-circleLabel.ZIndex = 3
+-- Add smooth edges to the NameBox
+local NameBoxUICorner = Instance.new("UICorner")
+NameBoxUICorner.CornerRadius = UDim.new(0, 10)
+NameBoxUICorner.Parent = NameBox
 
--- Minimize functionality
-local isMinimized = false
-titleLabel.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-	    minimizeToggle()
-	end
-end
+-- StatusLabel setup
+StatusLabel.Parent = Frame
+StatusLabel.BackgroundTransparency = 1
+StatusLabel.Size = UDim2.new(1, 0, 0, 30)
+StatusLabel.Position = UDim2.new(0, 0, 0.4, 0)
+StatusLabel.Font = Enum.Font.SourceSans
+StatusLabel.Text = "Trade Scam: Off"
+StatusLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+StatusLabel.TextSize = 20
 
--- Minimize functionality
-local isMinimized = false
-local function minimizeToggle()
-    if isMinimized then
-        mainFrame.Visible = true
-        minimizeCircle.Visible = false
-        isMinimized = false
-    else
-        mainFrame.Visible = false
-        minimizeCircle.Visible = true
-        isMinimized = true
-    end
+-- OnButton setup
+OnButton.Parent = Frame
+OnButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+OnButton.Size = UDim2.new(0.4, 0, 0.15, 0)
+OnButton.Position = UDim2.new(0.1, 0, 0.6, 0)
+OnButton.Font = Enum.Font.SourceSansBold
+OnButton.Text = "On"
+OnButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+OnButton.TextSize = 18
+
+-- Add smooth edges to the OnButton
+local OnButtonUICorner = Instance.new("UICorner")
+OnButtonUICorner.CornerRadius = UDim.new(0, 10)
+OnButtonUICorner.Parent = OnButton
+
+-- OffButton setup
+OffButton.Parent = Frame
+OffButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+OffButton.Size = UDim2.new(0.4, 0, 0.15, 0)
+OffButton.Position = UDim2.new(0.5, 0, 0.6, 0)
+OffButton.Font = Enum.Font.SourceSansBold
+OffButton.Text = "Off"
+OffButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+OffButton.TextSize = 18
+
+-- Add smooth edges to the OffButton
+local OffButtonUICorner = Instance.new("UICorner")
+OffButtonUICorner.CornerRadius = UDim.new(0, 10)
+OffButtonUICorner.Parent = OffButton
+
+-- Footer setup
+Footer.Parent = Frame
+Footer.BackgroundColor3 = Color3.fromRGB(120, 120, 120)
+Footer.Size = UDim2.new(1, 0, 0, 30)
+Footer.Position = UDim2.new(0, 0, 0.85, 0)
+Footer.Font = Enum.Font.SourceSansItalic
+Footer.Text = "Made by RobloxScriptsOfficial"
+Footer.TextColor3 = Color3.fromRGB(255, 255, 255)
+Footer.TextSize = 14
+
+-- Add smooth edges to the Footer
+local FooterUICorner = Instance.new("UICorner")
+FooterUICorner.CornerRadius = UDim.new(0, 10)
+FooterUICorner.Parent = Footer
+
+-- Button functionality
+local statusEnabled = false
+
+OnButton.MouseButton1Click:Connect(function()
+    statusEnabled = true
+    StatusLabel.Text = "Trade Scam: On"
+    StatusLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
 end)
 
--- Circle button click functionality
-minimizeCircle.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        minimizeToggle()
-    end
-end)
-
--- Add button functionality
-onButton.MouseButton1Click:Connect(function()
-    toggleLabel.Text = "Trade Scam ON"
-    toggleLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
-end)
-
-offButton.MouseButton1Click:Connect(function()
-    toggleLabel.Text = "Trade Scam OFF"
-    toggleLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-end)
-
--- Minimize by default when clicking the title bar
-titleLabel.MouseButton1Click:Connect(function()
-    minimizeToggle()
+OffButton.MouseButton1Click:Connect(function()
+    statusEnabled = false
+    StatusLabel.Text = "Trade Scam: Off"
+    StatusLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
 end)
