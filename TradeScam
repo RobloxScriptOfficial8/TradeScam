@@ -1,89 +1,138 @@
 -- Create the ScreenGui
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.Name = "CustomGui"
 
 -- Create the main frame
 local mainFrame = Instance.new("Frame")
-mainFrame.Size = UDim2.new(0, 300, 0, 200)
-mainFrame.Position = UDim2.new(0.5, -150, 0.5, -100)
-mainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-mainFrame.BorderSizePixel = 0
 mainFrame.Parent = screenGui
+mainFrame.Size = UDim2.new(0, 300, 0, 150)
+mainFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
+mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+mainFrame.BorderSizePixel = 2
+mainFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
 mainFrame.Active = true
-mainFrame.Draggable = true -- Make the GUI movable
-mainFrame.ClipsDescendants = true
-mainFrame.BackgroundTransparency = 0.1
-mainFrame.BorderRadius = UDim.new(0, 15) -- Smooth edges
+mainFrame.Draggable = true -- Makes it movable
 
--- Add a title bar
-local titleBar = Instance.new("TextLabel")
-titleBar.Size = UDim2.new(1, 0, 0, 30)
-titleBar.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-titleBar.Text = "Trade Scam GUI"
-titleBar.TextColor3 = Color3.fromRGB(255, 255, 255)
-titleBar.TextScaled = true
-titleBar.Font = Enum.Font.GothamBold
-titleBar.Parent = mainFrame
+-- Create the title label
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Parent = mainFrame
+titleLabel.Size = UDim2.new(1, 0, 0, 30)
+titleLabel.Position = UDim2.new(0, 0, 0, 0)
+titleLabel.Text = "Custom GUI"
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+titleLabel.Font = Enum.Font.SourceSansBold
+titleLabel.TextSize = 18
 
--- Create the status label
-local statusLabel = Instance.new("TextLabel")
-statusLabel.Size = UDim2.new(1, -20, 0, 50)
-statusLabel.Position = UDim2.new(0, 10, 0, 40)
-statusLabel.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-statusLabel.Text = "Trade Scam OFF"
-statusLabel.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red for "OFF"
-statusLabel.TextScaled = true
-statusLabel.BorderSizePixel = 0
-statusLabel.Font = Enum.Font.Gotham
-statusLabel.Parent = mainFrame
+-- Create the toggle label
+local toggleLabel = Instance.new("TextLabel")
+toggleLabel.Parent = mainFrame
+toggleLabel.Size = UDim2.new(1, -20, 0, 40)
+toggleLabel.Position = UDim2.new(0, 10, 0, 40)
+toggleLabel.Text = "Trade Scam OFF"
+toggleLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+toggleLabel.BackgroundTransparency = 1
+toggleLabel.Font = Enum.Font.SourceSans
+toggleLabel.TextSize = 16
 
--- Create the "ON" button
+-- Create the ON button
 local onButton = Instance.new("TextButton")
-onButton.Size = UDim2.new(0.4, 0, 0, 50)
-onButton.Position = UDim2.new(0.05, 0, 0.5, 0)
-onButton.BackgroundColor3 = Color3.fromRGB(70, 140, 70)
+onButton.Parent = mainFrame
+onButton.Size = UDim2.new(0, 100, 0, 40)
+onButton.Position = UDim2.new(0.1, 0, 0.6, 0)
 onButton.Text = "ON"
 onButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-onButton.TextScaled = true
-onButton.Font = Enum.Font.GothamBold
-onButton.Parent = mainFrame
-onButton.BorderRadius = UDim.new(0, 12) -- Rounded edges for buttons
+onButton.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+onButton.Font = Enum.Font.SourceSansBold
+onButton.TextSize = 16
 
--- Create the "OFF" button
+-- Create the OFF button
 local offButton = Instance.new("TextButton")
-offButton.Size = UDim2.new(0.4, 0, 0, 50)
-offButton.Position = UDim2.new(0.55, 0, 0.5, 0)
-offButton.BackgroundColor3 = Color3.fromRGB(140, 70, 70)
+offButton.Parent = mainFrame
+offButton.Size = UDim2.new(0, 100, 0, 40)
+offButton.Position = UDim2.new(0.6, 0, 0.6, 0)
 offButton.Text = "OFF"
 offButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-offButton.TextScaled = true
-offButton.Font = Enum.Font.GothamBold
-offButton.Parent = mainFrame
-offButton.BorderRadius = UDim.new(0, 12) -- Rounded edges for buttons
+offButton.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+offButton.Font = Enum.Font.SourceSansBold
+offButton.TextSize = 16
 
--- Create the footer
-local footer = Instance.new("TextLabel")
-footer.Size = UDim2.new(1, 0, 0, 30)
-footer.Position = UDim2.new(0, 0, 1, -30)
-footer.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-footer.Text = "Made by RobloxScriptsOfficial"
-footer.TextColor3 = Color3.fromRGB(200, 200, 200)
-footer.TextScaled = true
-footer.Font = Enum.Font.Gotham
-footer.BorderSizePixel = 0
-footer.Parent = mainFrame
+-- Create the footer label
+local footerLabel = Instance.new("TextLabel")
+footerLabel.Parent = mainFrame
+footerLabel.Size = UDim2.new(1, 0, 0, 20)
+footerLabel.Position = UDim2.new(0, 0, 1, -20)
+footerLabel.Text = "Made by RobloxScriptsOfficial"
+footerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+footerLabel.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+footerLabel.Font = Enum.Font.SourceSans
+footerLabel.TextSize = 14
 
--- Define toggle functionality
-local isTradeScamOn = false
+-- Create the minimize button (circle)
+local minimizeCircle = Instance.new("Frame")
+minimizeCircle.Parent = screenGui
+minimizeCircle.Size = UDim2.new(0, 50, 0, 50)
+minimizeCircle.Position = UDim2.new(0.9, -50, 0.1, 0)
+minimizeCircle.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+minimizeCircle.BorderSizePixel = 0
+minimizeCircle.Visible = false
+minimizeCircle.Active = true
+minimizeCircle.Draggable = true -- Makes it movable
+minimizeCircle.ZIndex = 2
+minimizeCircle.Shape = Enum.UIShape.Circle -- Makes it circular
 
+local circleLabel = Instance.new("TextLabel")
+circleLabel.Parent = minimizeCircle
+circleLabel.Size = UDim2.new(1, 0, 1, 0)
+circleLabel.Text = "+"
+circleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+circleLabel.BackgroundTransparency = 1
+circleLabel.Font = Enum.Font.SourceSansBold
+circleLabel.TextSize = 24
+circleLabel.ZIndex = 3
+
+-- Minimize functionality
+local isMinimized = false
+titleLabel.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+	    minimizeToggle()
+	end
+end
+
+-- Minimize functionality
+local isMinimized = false
+local function minimizeToggle()
+    if isMinimized then
+        mainFrame.Visible = true
+        minimizeCircle.Visible = false
+        isMinimized = false
+    else
+        mainFrame.Visible = false
+        minimizeCircle.Visible = true
+        isMinimized = true
+    end
+end)
+
+-- Circle button click functionality
+minimizeCircle.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        minimizeToggle()
+    end
+end)
+
+-- Add button functionality
 onButton.MouseButton1Click:Connect(function()
-    isTradeScamOn = true
-    statusLabel.Text = "Trade Scam ON"
-    statusLabel.TextColor3 = Color3.fromRGB(0, 255, 0) -- Green for "ON"
+    toggleLabel.Text = "Trade Scam ON"
+    toggleLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
 end)
 
 offButton.MouseButton1Click:Connect(function()
-    isTradeScamOn = false
-    statusLabel.Text = "Trade Scam OFF"
-    statusLabel.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red for "OFF"
+    toggleLabel.Text = "Trade Scam OFF"
+    toggleLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+end)
+
+-- Minimize by default when clicking the title bar
+titleLabel.MouseButton1Click:Connect(function()
+    minimizeToggle()
 end)
