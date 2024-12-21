@@ -1,0 +1,89 @@
+-- Create the ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Create the main frame
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 300, 0, 200)
+mainFrame.Position = UDim2.new(0.5, -150, 0.5, -100)
+mainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = screenGui
+mainFrame.Active = true
+mainFrame.Draggable = true -- Make the GUI movable
+mainFrame.ClipsDescendants = true
+mainFrame.BackgroundTransparency = 0.1
+mainFrame.BorderRadius = UDim.new(0, 15) -- Smooth edges
+
+-- Add a title bar
+local titleBar = Instance.new("TextLabel")
+titleBar.Size = UDim2.new(1, 0, 0, 30)
+titleBar.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+titleBar.Text = "Trade Scam GUI"
+titleBar.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleBar.TextScaled = true
+titleBar.Font = Enum.Font.GothamBold
+titleBar.Parent = mainFrame
+
+-- Create the status label
+local statusLabel = Instance.new("TextLabel")
+statusLabel.Size = UDim2.new(1, -20, 0, 50)
+statusLabel.Position = UDim2.new(0, 10, 0, 40)
+statusLabel.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+statusLabel.Text = "Trade Scam OFF"
+statusLabel.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red for "OFF"
+statusLabel.TextScaled = true
+statusLabel.BorderSizePixel = 0
+statusLabel.Font = Enum.Font.Gotham
+statusLabel.Parent = mainFrame
+
+-- Create the "ON" button
+local onButton = Instance.new("TextButton")
+onButton.Size = UDim2.new(0.4, 0, 0, 50)
+onButton.Position = UDim2.new(0.05, 0, 0.5, 0)
+onButton.BackgroundColor3 = Color3.fromRGB(70, 140, 70)
+onButton.Text = "ON"
+onButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+onButton.TextScaled = true
+onButton.Font = Enum.Font.GothamBold
+onButton.Parent = mainFrame
+onButton.BorderRadius = UDim.new(0, 12) -- Rounded edges for buttons
+
+-- Create the "OFF" button
+local offButton = Instance.new("TextButton")
+offButton.Size = UDim2.new(0.4, 0, 0, 50)
+offButton.Position = UDim2.new(0.55, 0, 0.5, 0)
+offButton.BackgroundColor3 = Color3.fromRGB(140, 70, 70)
+offButton.Text = "OFF"
+offButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+offButton.TextScaled = true
+offButton.Font = Enum.Font.GothamBold
+offButton.Parent = mainFrame
+offButton.BorderRadius = UDim.new(0, 12) -- Rounded edges for buttons
+
+-- Create the footer
+local footer = Instance.new("TextLabel")
+footer.Size = UDim2.new(1, 0, 0, 30)
+footer.Position = UDim2.new(0, 0, 1, -30)
+footer.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+footer.Text = "Made by RobloxScriptsOfficial"
+footer.TextColor3 = Color3.fromRGB(200, 200, 200)
+footer.TextScaled = true
+footer.Font = Enum.Font.Gotham
+footer.BorderSizePixel = 0
+footer.Parent = mainFrame
+
+-- Define toggle functionality
+local isTradeScamOn = false
+
+onButton.MouseButton1Click:Connect(function()
+    isTradeScamOn = true
+    statusLabel.Text = "Trade Scam ON"
+    statusLabel.TextColor3 = Color3.fromRGB(0, 255, 0) -- Green for "ON"
+end)
+
+offButton.MouseButton1Click:Connect(function()
+    isTradeScamOn = false
+    statusLabel.Text = "Trade Scam OFF"
+    statusLabel.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red for "OFF"
+end)
